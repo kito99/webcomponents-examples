@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>&lt;Simple Counter&gt;</title>
+
+	<!-- tag::element1-imports[]-->
+	<!-- Importing Web Component's Polyfill -->
+	<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+	<script src="bower_components/webcomponentsjs/src/CustomElements/v1/CustomElements.js"></script>
+	
+	<!-- Import our custom element -->
+	<script src="src/simple-counter.js"></script>
+	<!-- end::element1-imports[]-->
+	
+	<style>
+		.counter { 
+			color: blue; 
+			font-size: 60pt; 
+			font-family: sans-serif; 
+			text-align: center; 
+			width: 100%; 
+			margin-top: 10%;
+			display: block;"
+		}	 
+	</style>
+</head>
+	<body>
+		<!-- Using our new custom element --> 
+		<!-- tag::element1-tag[]-->
+		<simple-counter class="counter" start="10"></simple-counter>
+		<!-- end::element1-tag[]-->
+	</body>
+</html>
