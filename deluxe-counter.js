@@ -1,7 +1,7 @@
 /**
  deluxe-counter example custom element
 
- @author Kito D. Mann (kito.public at virtua dot com), http://virtua.tech
+ @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
  */
 // tag::create-element2[]
 class DeluxeCounter extends SimpleCounter {
@@ -46,6 +46,6 @@ class DeluxeCounter extends SimpleCounter {
 // end::overrides-element2[]
 }
 // tag::register-element2[]
-// Registers <deluxe-counter> in the main document
+// Registers <deluxe-counter> as a custom element
 window.customElements.define('deluxe-counter', DeluxeCounter);
 // end::register-element2[]
