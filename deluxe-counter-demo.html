@@ -2,36 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Simple Counter Web Component Demo</title>
+    <title>Deluxe Counter Web Component Demo<</title>
 
-    <!-- tag::element1-imports[]-->
     <!-- Importing Web Component's Polyfill -->
+    <!-- tag::imports[] -->
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-    <!-- Import our custom element -->
     <script src="simple-counter.js"></script>
-    <!-- end::element1-imports[]-->
+    <script src="deluxe-counter.js"></script>
+    <!-- end::imports[]-->
 
     <style>
         body {
             text-align: center;
         }
         .counter {
-            color: blue;
+            color: indigo;
             font-size: 60pt;
             font-family: sans-serif;
             text-align: center;
-            margin-top: 10px;
+            display: block;
             padding: 10px;
             border: 1px black inset;
+        }
+
+        .counter-disabled {
+            color: gray;
         }
     </style>
 </head>
 <body>
-    <h1>Simple Counter Web Component Demo</h1>
-    <!-- Using our new custom element -->
-    <!-- tag::element1-tag[]-->
-    <simple-counter class="counter" first="10"></simple-counter>
-    <!-- end::element1-tag[]-->
+    <h1>Deluxe Counter Web Component Demo</h1>
+    <h3>Click on counter text to start/stop the counter.</h3>
+    <!-- tag::element2-tag[]-->
+    <deluxe-counter class="counter" start="10"></deluxe-counter>
+    <!-- end::element2-tag[]-->
 </body>
 </html>
