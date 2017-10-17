@@ -1,0 +1,20 @@
+{
+  "name": "webcomponents-v1-examples",
+  "description": "Example web components.",
+  "main": "",
+  "authors": [
+    "kito99 <kito.mann@virtua.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kito99/webcomponents-v1-examples",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^1.0.10"
+  }
+}
