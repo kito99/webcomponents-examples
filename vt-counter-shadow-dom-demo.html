@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Shadow DOM Web Component Demo</title>
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- Import our custom element -->
+    <script src="vt-counter-shadow-dom.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter Shadow DOM Web Component Demo</h1>
+    <!-- Using our new custom element -->
+    <vt-counter first="10"></vt-counter>
+
+    <!-- For displaying event output -->
+    <div id="events"></div>
+
+<script>
+
+    let events = '';
+    const eventElement = document.getElementById('events');
+
+    document.addEventListener('vt-counter-started', function(event) {
+    	events += '<br>Counter Started; value: ' + event.detail.value;
+    	eventElement.innerHTML = events;
+    });
+
+	document.addEventListener('vt-counter-stopped', function(event) {
+		events += '<br>Counter Stopped; value: ' + event.detail.value;
+		eventElement.innerHTML = events;
+	});
+
+</script>
+</body>
+</html>

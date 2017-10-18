@@ -32,11 +32,11 @@
 
 			/** Fires when an instance was inserted into the document */
 			connectedCallback() {
-				this.counterDiv = template.content.cloneNode(true);
-				this.appendChild(this.counterDiv);
+				this._content = template.content.cloneNode(true);
+				this.appendChild(this._content);
 				this.count = Number(this.first) || 0;
 				this.onclick = () => {
-					if (this.timer === null) {
+					if (this._timer === null) {
 						this.start();
 					}
 					else{
@@ -47,16 +47,16 @@
 
 			start() {
 				super.start();
-				this.counterDiv.className = "counter";
+				this._content.className = "counter";
 			}
 
 			stop() {
 				super.stop();
-				this.counterDiv.className = "counter counter-disabled";
+				this._content.className = "counter counter-disabled";
 			}
 
 			update(counterValue) {
-				this.counterDiv.innerText = counterValue;
+				this._content.innerText = counterValue;
 			}
 
 		}

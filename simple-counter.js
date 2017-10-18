@@ -25,7 +25,7 @@ class SimpleCounter extends HTMLElement {
 	constructor() {
 		super();
 		this.count = 0;
-		this.timer = null;
+		this._timer = null;
 	}
 
 	// end::variables[]
@@ -53,15 +53,15 @@ class SimpleCounter extends HTMLElement {
 
 	start() {
 		const _self = this;
-		this.timer = setInterval(function() {
+		this._timer = setInterval(function() {
 			_self.count = _self.count + 1;
 			_self.update(_self.count);
 		}, 2000);
 	}
 
 	stop() {
-		clearInterval(this.timer);
-		this.timer = null;
+		clearInterval(this._timer);
+		this._timer = null;
 	}
 
 	update(counterValue) {
