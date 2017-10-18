@@ -28,35 +28,19 @@
 		`;
 
 	/**
-	 vt-counter example custom element (v1 spec)
+	 vt-shadow-dom-counter example custom element (v1 spec)
 
 	 @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
 	 */
-	class VirtuaTrainingCounter extends HTMLElement {
+	class VirtuaTrainingShadowDomCounter extends VirtuaTrainingCounter {
 
-		// Store properties as attributes so they work both ways.
-		get first() {
-			return this.getAttribute('first');
-		}
-
-		set first(first) {
-			this.value = Number(first);
-			this.setAttribute('first', first);
-		}
-
-		// Don't store this property as an attribute because it changes frequently.
-		get value() {
-			return this._value;
-		}
-
-		set value(value) {
-			const num = Number(value);
-			this._value = num;
-			this._content.innerText = num;
-		}
-
+		/**
+		 * @override
+		 */
 		constructor() {
 			super();
+
+			console.log('inside overridden constructor');
 			const templateContent = template.content.cloneNode(true);
 			this._content = templateContent.getElementById('value');
 			this.attachShadow({mode: 'open'});
@@ -65,84 +49,18 @@
 			this._onClick = this._onClick.bind(this);
 		}
 
-		/** Fires when an instance was inserted into the document */
+		/**
+		 * Fires when an instance was inserted into the document.
+		 * @override
+		 */
 		connectedCallback() {
+			console.log('inside overridden connectedCallback');
 			this._upgradeProperty('first');
 			this.value = this.first || 0;
-			this.addEventListener('click', this._onClick);
-		}
-
-		/**
-		 * Fires when an instance was removed from the document. Here
-		 * we stop the timer and remove event listeners.
-		 */
-		disconnectedCallback() {
-			this.stop();
-			this.removeEventListener('click', this._onClick);
-		};
-
-		/**
-		 * Fires when an attribute was added, removed, or updated. Here we
-		 * change the `value` to `first` and restart the timer if `first` changes.
-		 */
-		attributeChangedCallback(attr, oldVal, newVal) {
-			switch (attr) {
-				case 'first' :
-					this.value = newVal;
-					this.stop();
-					this.start();
-					break;
-			}
-		}
-
-		start() {
-			this._content.classList.remove('counter-disabled');
-			this._timer = setInterval(() => {
-				this.value++;
-			}, 2000);
-			this.dispatchEvent(new CustomEvent('vt-counter-started', {
-				detail: {
-					value: this.value,
-				},
-				bubbles: true
-			}));
-		}
-
-		stop() {
-			clearInterval(this._timer);
-			this._timer = null;
-			this._content.classList.add('counter-disabled');
-			this.dispatchEvent(new CustomEvent('vt-counter-stopped', {
-				detail: {
-					value: this.value,
-				},
-				bubbles: true
-			}));
-		}
-
-		_onClick() {
-			if (!this._timer) {
-				this.start();
-			}
-			else{
-				this.stop();
-			}
-		}
-
-		/**
-		 * If the property was set before the element was upgraded,
-		 * remove it and set it again so that the proper setter is used.
-		 */
-		_upgradeProperty(prop) {
-			if (this.hasOwnProperty(prop)) {
-				let value = this[prop];
-				delete this[prop];
-				this[prop] = value;
-			}
 		}
 	}
 
 
-// Registers <vt-counter> as a custom element
-	window.customElements.define('vt-counter', VirtuaTrainingCounter);
+	// Registers <vt-shadow-dom-counter> as a custom element
+	window.customElements.define('vt-shadow-dom-counter', VirtuaTrainingShadowDomCounter);
 })();

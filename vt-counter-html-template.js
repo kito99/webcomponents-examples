@@ -46,7 +46,6 @@
 
 			this._upgradeProperty('first');
 			this.value = this.first || 0;
-			this.addEventListener('click', this._onClick);
 		}
 	}
 
