@@ -57,34 +57,42 @@
 
 		constructor() {
 			super();
+			const templateContent = template.content.cloneNode(true);
+			this._content = templateContent.getElementById('value');
+			this.attachShadow({mode: 'open'});
+			this.shadowRoot.appendChild(templateContent);
+
 			this._onClick = this._onClick.bind(this);
 		}
 
 		/** Fires when an instance was inserted into the document */
 		connectedCallback() {
-			const templateContent = template.content.cloneNode(true);
-			this._content = templateContent.getElementById('value');
-
-			this.attachShadow({mode: 'open'});
-			this.shadowRoot.appendChild(templateContent);
-
 			this._upgradeProperty('first');
 			this.value = this.first || 0;
 			this.addEventListener('click', this._onClick);
 		}
 
-		/** Fires when an instance was removed from the document */
+		/**
+		 * Fires when an instance was removed from the document. Here
+		 * we stop the timer and remove event listeners.
+		 */
 		disconnectedCallback() {
 			this.stop();
 			this.removeEventListener('click', this._onClick);
 		};
 
-		/** Fires when an attribute was added, removed, or updated */
+		/**
+		 * Fires when an attribute was added, removed, or updated. Here we
+		 * change the `value` to `first` and restart the timer if `first` changes.
+		 */
 		attributeChangedCallback(attr, oldVal, newVal) {
-		}
-
-		/** Fires when the element is moved to a new document */
-		adoptedCallback() {
+			switch (attr) {
+				case 'first' :
+					this.value = newVal;
+					this.stop();
+					this.start();
+					break;
+			}
 		}
 
 		start() {
