@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Counter Web Component Demo</title>
+    <title>Counter Web Component Demos</title>
 
     <!-- Importing Web Component's Polyfill -->
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
@@ -24,7 +24,7 @@
             border: 1px black inset;
         }
 
-        .counter :hover {
+        .counter:hover {
             cursor: pointer;
         }
 
@@ -34,32 +34,42 @@
     </style>
 </head>
 <body>
-    <h1>Counter Web Component Demo</h1>
-    <!-- Using our new custom element -->
-    <vt-counter class="counter" first="1"></vt-counter>
-    <vt-counter-html-template first="2"></vt-counter-html-template>
-    <vt-counter-shadow-dom  first="3"></vt-counter-shadow-dom>
+<h1>Counter Web Component Demos</h1>
 
-    <!-- For displaying event output -->
-    <div id="events"></div>
+<vt-counter class="counter"></vt-counter>
+<vt-counter-html-template first="1"></vt-counter-html-template>
+<vt-counter-shadow-dom first="2"></vt-counter-shadow-dom>
+
+<!-- For displaying event output -->
+<div id="events"></div>
 
 <script>
 
-    let events = '';
-    const eventElement = document.getElementById('events');
+	let events = '';
+	const eventElement = document.getElementById('events');
 
-	customElements.whenDefined('vt-counter').then(() => {
-		events += '<br>vt-counter upgraded';
+	customElements.whenDefined('vt-counter').then(function() {
+		events += `<br>[vt-counter] Upgraded`;
 		eventElement.innerHTML = events;
 	});
 
-    document.addEventListener('vt-counter-started', function(event) {
-    	events += '<br>Counter Started; value: ' + event.detail.value;
-    	eventElement.innerHTML = events;
-    });
+	customElements.whenDefined('vt-counter-shadow-dom').then(function() {
+		events += `<br>[vt-counter-shadow-dom] Upgraded`;
+		eventElement.innerHTML = events;
+	});
+
+	customElements.whenDefined('vt-counter-html-template').then(function() {
+		events += `<br>[vt-counter-html-template] Upgraded`;
+		eventElement.innerHTML = events;
+	});
+
+	document.addEventListener('vt-counter-started', function(event) {
+		events += `<br>[${event.target.localName}] Counter Started; value:  ${event.detail.value}`;
+		eventElement.innerHTML = events;
+	});
 
 	document.addEventListener('vt-counter-stopped', function(event) {
-		events += '<br>Counter Stopped; value: ' + event.detail.value;
+		events += `<br>[${event.target.localName}] Counter Stopped; value:  ${event.detail.value}`;
 		eventElement.innerHTML = events;
 	});
 

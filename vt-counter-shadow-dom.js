@@ -9,26 +9,32 @@
 	template.innerHTML = `
 	
 		<style>
+			:host {
+		        border: 1px black inset;
+		        padding: 10px;
+		        display: inline-block;
+			}
 		    .counter {
             	color: indigo;
             	font-size: 60pt;
             	font-family: sans-serif;
             	text-align: center;
-            	padding: 10px;
-            	border: 1px black inset;
         	}
-
+            .counter:hover {
+            	cursor: pointer;
+        	}        	
         	.counter-disabled {
            	 	color: gray;
         	}
 		</style>
 		
-		<span id="value" class="counter counter-disabled">Counter</span>
+		<slot></slot>
+		<span id="value" class="counter counter-disabled"></span>
 		
 		`;
 
 	/**
-	 vt-shadow-dom-counter example custom element (v1 spec)
+	 vt-counter-shadow-dom example custom element (v1 spec)
 
 	 @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
 	 */
@@ -61,6 +67,6 @@
 	}
 
 
-	// Registers <vt-shadow-dom-counter> as a custom element
-	window.customElements.define('vt-shadow-dom-counter', VirtuaTrainingShadowDomCounter);
+	// Registers <vt-counter-shadow-dom> as a custom element
+	window.customElements.define('vt-counter-shadow-dom', VirtuaTrainingShadowDomCounter);
 })();

@@ -15,12 +15,20 @@
         body {
             text-align: center;
         }
+
+        .header {
+            font-size: 14pt;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <h1>Counter Shadow DOM Web Component Demo</h1>
+
     <!-- Using our new custom element -->
-    <vt-shadow-dom-counter first="10"></vt-shadow-dom-counter>
+    <vt-counter-shadow-dom first="10">
+        <div class="header">Shadow DOM Counter</div>
+    </vt-counter-shadow-dom>
 
     <!-- For displaying event output -->
     <div id="events"></div>
@@ -29,6 +37,11 @@
 
     let events = '';
     const eventElement = document.getElementById('events');
+
+	customElements.whenDefined('vt-counter-shadow-dom').then(() => {
+		events += '<br>vt-counter-shadow-dom upgraded';
+		eventElement.innerHTML = events;
+	});
 
     document.addEventListener('vt-counter-started', function(event) {
     	events += '<br>Counter Started; value: ' + event.detail.value;

@@ -17,6 +17,10 @@
             	padding: 10px;
             	border: 1px black inset;
         	}
+        	
+            .counter:hover {
+            	cursor: pointer;
+        	}
 
         	.counter-disabled {
            	 	color: gray;
@@ -28,7 +32,7 @@
 		`;
 
 	/**
-	 vt-html-template-counter example custom element (v1 spec)
+	 vt-counter-html-template example custom element (v1 spec)
 
 	 @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
 	 */
@@ -50,6 +54,6 @@
 	}
 
 
-	// Registers <vt-html-template-counter> as a custom element
-	window.customElements.define('vt-html-template-counter', VirtuaTrainingHtmlTemplateCounter);
+	// Registers <vt-counter-html-template> as a custom element
+	window.customElements.define('vt-counter-html-template', VirtuaTrainingHtmlTemplateCounter);
 })();
