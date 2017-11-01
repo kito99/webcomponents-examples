@@ -3,6 +3,7 @@
 
  @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
  */
+// tag::code[]
 class VirtuaTrainingEcho extends HTMLElement {
 
 	static get observedAttributes() {
@@ -55,3 +56,4 @@ class VirtuaTrainingEcho extends HTMLElement {
 
 // Registers <vt-counter> as a custom element
 window.customElements.define('vt-echo', VirtuaTrainingEcho);
+// end:code[]
