@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Simple Template Example</title>
+    <meta charset="UTF-8">
+    <title>Simple Template Example</title>
 
-	<script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 </head>
-	<body>
-		Simple demo of using an HTML template (without a custom element).
+<body>
+Simple demo of using an HTML template (without a custom element).
 
-		<!-- tag::template[]-->
-		<template id="template">
-			<div id="inner-div">
-				<div>Inside the template, baby!</div>
-			</div>
-		</template>
-		<!-- end::template[]-->
+<!-- tag::template[]-->
+<template id="template">
+    <div id="inner-div">
+        <div>Inside the template, baby!</div>
+    </div>
+</template>
+<!-- end::template[]-->
 
-		<!-- tag::script[]-->		
-		<script>
-			var templateClone = document.importNode(
-				document.querySelector("#template").content, true);
-			var body = document.querySelector("body");
-			body.appendChild(templateClone);
-			
-			var templateClone2 = document.importNode(
-				document.querySelector("#template").content, true);
-			body.appendChild(templateClone2);			
-		</script>
-		<!-- end::script[]-->			
-	</body>
+<!-- tag::script[]-->
+<script>
+    var templateClone = document.importNode(
+        document.querySelector("#template").content, true);
+    var body = document.querySelector("body");
+    body.appendChild(templateClone);
+
+    var templateClone2 = document.importNode(
+        document.querySelector("#template").content, true);
+    body.appendChild(templateClone2);
+</script>
+<!-- end::script[]-->
+</body>
 </html>

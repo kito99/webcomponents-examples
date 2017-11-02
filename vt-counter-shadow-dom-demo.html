@@ -23,35 +23,35 @@
     </style>
 </head>
 <body>
-    <h1>Counter Shadow DOM Web Component Demo</h1>
+<h1>Counter Shadow DOM Web Component Demo</h1>
 
-    <!-- Using our new custom element -->
-    <vt-counter-shadow-dom first="10">
-        <div class="header">Shadow DOM Counter</div>
-    </vt-counter-shadow-dom>
+<!-- Using our new custom element -->
+<vt-counter-shadow-dom first="10">
+    <div class="header">Shadow DOM Counter</div>
+</vt-counter-shadow-dom>
 
-    <!-- For displaying event output -->
-    <div id="events"></div>
+<!-- For displaying event output -->
+<div id="events"></div>
 
 <script>
 
     let events = '';
     const eventElement = document.getElementById('events');
 
-	customElements.whenDefined('vt-counter-shadow-dom').then(() => {
-		events += '<br>vt-counter-shadow-dom upgraded';
-		eventElement.innerHTML = events;
-	});
-
-    document.addEventListener('vt-counter-started', function(event) {
-    	events += '<br>Counter Started; value: ' + event.detail.value;
-    	eventElement.innerHTML = events;
+    customElements.whenDefined('vt-counter-shadow-dom').then(() => {
+        events += '<br>vt-counter-shadow-dom upgraded';
+        eventElement.innerHTML = events;
     });
 
-	document.addEventListener('vt-counter-stopped', function(event) {
-		events += '<br>Counter Stopped; value: ' + event.detail.value;
-		eventElement.innerHTML = events;
-	});
+    document.addEventListener('vt-counter-started', function(event) {
+        events += '<br>Counter Started; value: ' + event.detail.value;
+        eventElement.innerHTML = events;
+    });
+
+    document.addEventListener('vt-counter-stopped', function(event) {
+        events += '<br>Counter Stopped; value: ' + event.detail.value;
+        eventElement.innerHTML = events;
+    });
 
 </script>
 </body>

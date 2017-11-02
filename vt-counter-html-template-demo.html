@@ -18,12 +18,12 @@
     </style>
 </head>
 <body>
-    <h1>Counter HTML Template Web Component Demo</h1>
-    <!-- Using our new custom element -->
-    <vt-counter-html-template first="10"></vt-counter-html-template>
+<h1>Counter HTML Template Web Component Demo</h1>
+<!-- Using our new custom element -->
+<vt-counter-html-template first="10"></vt-counter-html-template>
 
-    <!-- For displaying event output -->
-    <div id="events"></div>
+<!-- For displaying event output -->
+<div id="events"></div>
 
 <script>
 
@@ -31,14 +31,14 @@
     const eventElement = document.getElementById('events');
 
     document.addEventListener('vt-counter-started', function(event) {
-    	events += '<br>Counter Started; value: ' + event.detail.value;
-    	eventElement.innerHTML = events;
+        events += '<br>Counter Started; value: ' + event.detail.value;
+        eventElement.innerHTML = events;
     });
 
-	document.addEventListener('vt-counter-stopped', function(event) {
-		events += '<br>Counter Stopped; value: ' + event.detail.value;
-		eventElement.innerHTML = events;
-	});
+    document.addEventListener('vt-counter-stopped', function(event) {
+        events += '<br>Counter Stopped; value: ' + event.detail.value;
+        eventElement.innerHTML = events;
+    });
 
 </script>
 </body>
