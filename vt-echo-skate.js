@@ -6,8 +6,10 @@ import {props, withComponent} from './node_modules/skatejs/esnext/index.js';
  @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
  */
 
+/** withComponent includes withChildren, withProps, withRenderer and withUnique mixins */
 const Component = withComponent();
-class VirtuaTrainingEchoSlate extends Component {
+
+class VirtuaTrainingEchoSkate extends Component {
 
     constructor() {
         super();
@@ -15,13 +17,13 @@ class VirtuaTrainingEchoSlate extends Component {
         this.message = '';
     }
 
-    /** Skate-specific callback to use for actual rendering. */
+    /** Skate callback from withRenderer; performs the actual rendering */
     rendererCallback(renderRoot, renderCallback) {
         renderRoot.innerHTML = '';
         renderRoot.appendChild(renderCallback());
     }
 
-    /** Skate-specific callback that returns content to be rendered. */
+    /** Skate callback from withRenderer; returns content to be rendered. */
     renderCallback({message}) {
         console.log('inside renderCallback');
         let el = document.createElement('span');
@@ -29,9 +31,25 @@ class VirtuaTrainingEchoSlate extends Component {
         return el;
     }
 
-    /** Skate-specific callback when rendering has completed */
+    /** Skate callback from withRenderer; called when rendering has completed */
     renderedCallback() {
         console.log('inside renderedCallback');
+    }
+
+    /** Skate callback from withProps; called when properties have been set (not necessarily changed) */
+    propsSetCallback(next, prev) {
+        console.log('inside propSetCallback', 'next:', next, 'prev:', prev);
+    }
+
+    /** Skate callback from withProps; called when properties have changed */
+    propsChangedCallback(next, prev) {
+        super.propsChangedCallback(next, prev);
+        console.log('inside propsChangedCallback', 'next:', next, 'prev:', prev);
+    }
+
+    /** Skate callback from withChildren; called when the children have changed */
+    childrenChangedCallback() {
+        console.log('inside childrenChangedCalback');
     }
 
     /** Fires after an instance has been inserted into the document */
@@ -47,7 +65,7 @@ class VirtuaTrainingEchoSlate extends Component {
     disconnectedCallback() {
         super.disconnectedCallback();
         console.log('inside disconnectedCallback');
-    };
+    }
 
     /**
      * Fires after an attribute has been added, removed, or updated. Here we
@@ -65,9 +83,11 @@ class VirtuaTrainingEchoSlate extends Component {
     }
 }
 
-VirtuaTrainingEchoSlate.props = { message: props.string };
-VirtuaTrainingEchoSlate.is = 'vt-echo-skate';
+VirtuaTrainingEchoSkate.props = {
+    message: props.string
+};
+VirtuaTrainingEchoSkate.is = 'vt-echo-skate';
 
 
 // Registers <vt-echo-slate> as a custom element
-window.customElements.define('vt-echo-skate', VirtuaTrainingEchoSlate);
+window.customElements.define(VirtuaTrainingEchoSkate.is, VirtuaTrainingEchoSkate);
