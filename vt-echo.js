@@ -1,5 +1,5 @@
 /**
- vt-echo example custom element (v1 spec). Simple renders `message` inside <span>.
+ vt-echo example custom element (v1 spec). Simply renders `message` inside <span>.
 
  @author Kito D. Mann (kito-public at virtua dot com), http://virtua.tech
  */
@@ -41,7 +41,7 @@ class VirtuaTrainingEcho extends HTMLElement {
     };
 
     /**
-     * Fires after an attribute ahas been added, removed, or updated. Here we
+     * Fires after an attribute has been added, removed, or updated. Here we
      * change the `value` to `first` and restart the timer if `first` changes.
      */
     attributeChangedCallback(attr, oldVal, newVal) {

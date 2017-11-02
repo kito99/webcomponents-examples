@@ -61,7 +61,7 @@ class VirtuaTrainingCounter extends HTMLElement {
     };
 
     /**
-     * Fires after an attribute ahas been added, removed, or updated. Here we
+     * Fires after an attribute has been added, removed, or updated. Here we
      * change the `value` to `first` and restart the timer if `first` changes.
      */
     attributeChangedCallback(attr, oldVal, newVal) {
