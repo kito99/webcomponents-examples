@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Echo Skate Web Component Demo</title>
+
+    <!-- Importing Web Components Polyfill -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- Import Skate -->
+    <script type="module" id="skate" src="node_modules/skatejs/esnext/index.js"></script>
+
+    <!-- Import our custom element -->
+    <script type="module" src="vt-echo-skate.js"></script>
+</head>
+<body>
+<h1>Echo Skate Web Component Demo</h1>
+<!-- Using our new custom element -->
+<!-- tag::element[] -->
+<vt-echo-skate message="Hello Web Component world!"></vt-echo-skate>
+<!-- end::element[] -->
+</body>
+</html>
