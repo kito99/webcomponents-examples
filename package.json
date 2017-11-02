@@ -1,5 +1,5 @@
 {
-  "name": "webcomponents-v1-examples",
+  "name": "webcomponents-examples",
   "version": "0.0.1",
   "dependencies": {
     "skatejs": "^5.0.0-beta.3"
