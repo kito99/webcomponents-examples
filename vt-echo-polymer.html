@@ -1,0 +1,84 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="vt-echo-polymer">
+
+    <template>
+
+        <style>
+            :host {
+                display: inline-block;
+            }
+
+            span {
+                padding: 1rem;
+                background-color: aliceblue;
+            }
+        </style>
+
+        <span>{{message}}</span>
+    </template>
+
+    <script>
+		class VirtuaTrainingEchoPolymer extends Polymer.Element {
+
+			static get is() {
+				return 'vt-echo-polymer';
+			}
+
+			static get properties() {
+				return {
+					message: {
+						type: String,
+						notify: true,
+						reflectToAttribute: true,
+						value: false
+					}
+				}
+			}
+
+			constructor() {
+				super();
+				console.log('inside constructor');
+			}
+
+			/** Polymer-specific: fires once after the component has been added to the DOM. */
+			ready() {
+				super.ready();
+				console.log('inside ready');
+			}
+
+			/** Fires after an instance has been inserted into the document */
+			connectedCallback() {
+				console.log('inside connectedCallback');
+				super.connectedCallback();
+			}
+
+			/**
+			 * Fires after an instance has been removed from the document. Here
+			 * we stop the timer and remove event listeners.
+			 */
+			disconnectedCallback() {
+				console.log('inside disconnectedCallback');
+				super.disconnectedCallback();
+			};
+
+			/**
+			 * Fires after an attribute ahas been added, removed, or updated. Here we
+			 * change the `value` to `first` and restart the timer if `first` changes.
+			 */
+			attributeChangedCallback(attr, oldVal, newVal) {
+				console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal', oldVal, 'newVal', newVal);
+			}
+
+			/** Fires after an element has been moved to a new document */
+			adoptedCallback() {
+				console.log('inside adoptedCallback');
+			}
+		}
+
+		// Registers <vt-echo-polymer> as a custom element
+		window.customElements.define(VirtuaTrainingEchoPolymer.is, VirtuaTrainingEchoPolymer);
+		// end:code[]
+    </script>
+
+</dom-module>
