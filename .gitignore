@@ -2,3 +2,5 @@
 /webcomponents-v1-examples.iml
 /.idea/
 bower_components/
+/node_modules/
+/stencil-output/
