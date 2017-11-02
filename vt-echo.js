@@ -45,7 +45,7 @@ class VirtuaTrainingEcho extends HTMLElement {
 	 * change the `value` to `first` and restart the timer if `first` changes.
 	 */
 	attributeChangedCallback(attr, oldVal, newVal) {
-		console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal', oldVal, 'newVal', newVal);
+		console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
 	}
 
 	/** Fires after an element has been moved to a new document */

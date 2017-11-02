@@ -3,7 +3,6 @@
 <dom-module id="vt-echo-polymer">
 
     <template>
-
         <style>
             :host {
                 display: inline-block;
@@ -15,7 +14,7 @@
             }
         </style>
 
-        <span>{{message}}</span>
+        <span>[[message]]</span>
     </template>
 
     <script>
@@ -30,8 +29,7 @@
 					message: {
 						type: String,
 						notify: true,
-						reflectToAttribute: true,
-						value: false
+						reflectToAttribute: true
 					}
 				}
 			}
@@ -67,18 +65,19 @@
 			 * change the `value` to `first` and restart the timer if `first` changes.
 			 */
 			attributeChangedCallback(attr, oldVal, newVal) {
-				console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal', oldVal, 'newVal', newVal);
+				console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
+				super.attributeChangedCallback(attr, oldVal, newVal);
 			}
 
 			/** Fires after an element has been moved to a new document */
 			adoptedCallback() {
 				console.log('inside adoptedCallback');
+				super.adoptedCallback();
 			}
 		}
 
 		// Registers <vt-echo-polymer> as a custom element
 		window.customElements.define(VirtuaTrainingEchoPolymer.is, VirtuaTrainingEchoPolymer);
-		// end:code[]
     </script>
 
 </dom-module>

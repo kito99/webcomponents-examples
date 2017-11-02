@@ -65,7 +65,7 @@ class VirtuaTrainingCounter extends HTMLElement {
 	 * change the `value` to `first` and restart the timer if `first` changes.
 	 */
 	attributeChangedCallback(attr, oldVal, newVal) {
-		console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal', oldVal, 'newVal', newVal);
+		console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
 		switch (attr) {
 			case 'first' :
 				// attributeChangedCallback is called before connectedCallback, so this._content
