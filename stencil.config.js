@@ -5,13 +5,13 @@ exports.config = {
     collections: [
         {name: '@stencil/router'}
     ],
-    srcDir: '.',
-    buildDir: 'build',
+    srcDir: 'src/stencil',
     wwwDir: 'stencil-output'
 };
 
 exports.devServer = {
     root: '.',
-    watchGlob: 'vt-echo-stencil*'
+    watchGlob: '**/*'
 }
+
 

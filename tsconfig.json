@@ -17,7 +17,7 @@
     "jsxFactory": "h"
   },
   "include": [
-    "vt-echo-stencil*"
+    "src/stencil/**/*"
   ],
   "exclude": [
     "node_modules",

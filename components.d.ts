@@ -6,7 +6,7 @@
 
 import '@stencil/router';
 
-import { VirtuaTrainingEchoStencil as VtEchoStencil } from './vt-echo-stencil';
+import { VirtuaTrainingEchoStencil as VtEchoStencil } from './src/stencil/vt-echo-stencil';
 
 interface HTMLVtEchoStencilElement extends VtEchoStencil, HTMLElement {
 }
