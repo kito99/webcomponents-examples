@@ -27,8 +27,15 @@
 
 <script>
 
+    // Update the "events" div with the counter has been upgraded by the browser, and also when it fires custom events.
+
     let events = '';
     const eventElement = document.getElementById('events');
+
+    customElements.whenDefined('vt-counter').then(() => {
+        events += '<br>vt-counter upgraded';
+        eventElement.innerHTML = events;
+    });
 
     document.addEventListener('vt-counter-started', function(event) {
         events += '<br>Counter Started; value: ' + event.detail.value;
