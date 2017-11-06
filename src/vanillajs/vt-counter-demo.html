@@ -2,33 +2,41 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Counter Shadow DOM Web Component Demo</title>
+    <title>Counter Web Component Demo</title>
 
     <!-- Importing Web Components Polyfill -->
-    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
     <!-- Import our custom element -->
     <script src="vt-counter.js"></script>
-    <script src="vt-counter-shadow-dom.js"></script>
 
     <style>
         body {
             text-align: center;
         }
 
-        .header {
-            font-size: 14pt;
-            color: black;
+        .counter {
+            color: indigo;
+            font-size: 60pt;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 10px;
+            border: 1px black inset;
+        }
+
+        .counter:hover {
+            cursor: pointer;
+        }
+
+        .counter-disabled {
+            color: gray;
         }
     </style>
 </head>
 <body>
-<h1>Counter Shadow DOM Web Component Demo</h1>
-
+<h1>Counter Web Component Demo</h1>
 <!-- Using our new custom element -->
-<vt-counter-shadow-dom first="10">
-    <div class="header">Shadow DOM Counter</div>
-</vt-counter-shadow-dom>
+<vt-counter class="counter" first="10"></vt-counter>
 
 <!-- For displaying event output -->
 <div id="events"></div>
@@ -38,8 +46,8 @@
     let events = '';
     const eventElement = document.getElementById('events');
 
-    customElements.whenDefined('vt-counter-shadow-dom').then(() => {
-        events += '<br>vt-counter-shadow-dom upgraded';
+    customElements.whenDefined('vt-counter').then(() => {
+        events += '<br>vt-counter upgraded';
         eventElement.innerHTML = events;
     });
 

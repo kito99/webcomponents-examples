@@ -1,4 +1,4 @@
-import {props, withComponent} from './node_modules/skatejs/esnext/index.js';
+import {props, withComponent} from '../../node_modules/skatejs/esnext/index.js';
 
 /**
  vt-echo-skate example custom element (v1 spec) using SkateJS. Simply renders `message` inside <span>.
