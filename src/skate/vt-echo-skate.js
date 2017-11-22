@@ -76,7 +76,7 @@ class VirtuaTrainingEchoSkate extends Component {
         console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
     }
 
-    /** Fires after an element has been moved to a new document */
+    /**  Fires after an element has been moved to a new document. Not polyfilled. */
     adoptedCallback() {
         super.adoptedCallback();
         console.log('inside adoptedCallback');
