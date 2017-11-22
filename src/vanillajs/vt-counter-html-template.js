@@ -43,16 +43,17 @@
          * @override
          */
         connectedCallback() {
-            console.log('inside overridden connectedCallback')
+            console.log('inside overridden connectedCallback');
             const templateContent = template.content.cloneNode(true);
             this._content = templateContent.getElementById('value');
             this.appendChild(templateContent);
 
-            this._upgradeProperty('first');
-            this.value = this.first || 0;
+            this._upgradeProperty('value');
+            this._upgradeProperty('interval');
+
+            this.addEventListener('click', this._onClick);
         }
     }
-
 
     // Registers <vt-counter-html-template> as a custom element
     window.customElements.define('vt-counter-html-template', VirtuaTrainingHtmlTemplateCounter);

@@ -66,15 +66,14 @@ vt-echo-slate example custom element (v1 spec) using SkateJS. Simply renders `me
             };
 
             /**
-             * Fires after an attribute has been added, removed, or updated. Here we
-             * change the `value` to `first` and restart the timer if `first` changes.
+             * Fires after an attribute has been added, removed, or updated.
              */
             attributeChangedCallback(attr, oldVal, newVal) {
                 super.attributeChangedCallback(attr, oldVal, newVal);
                 console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
             }
 
-            /**  Fires after an element has been moved to a new document. Not polyfilled. */
+            /** Fires after an element has been moved to a new document */
             adoptedCallback() {
                 super.adoptedCallback();
                 console.log('inside adoptedCallback');

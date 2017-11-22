@@ -51,8 +51,6 @@
             this._content = templateContent.getElementById('value');
             this.attachShadow({mode: 'open'});
             this.shadowRoot.appendChild(templateContent);
-
-            this._onClick = this._onClick.bind(this);
         }
 
         /**
@@ -61,11 +59,12 @@
          */
         connectedCallback() {
             console.log('inside overridden connectedCallback');
-            this._upgradeProperty('first');
-            this.value = this.first || 0;
+            this._upgradeProperty('value');
+            this._upgradeProperty('interval');
+
+            this.addEventListener('click', this._onClick);
         }
     }
-
 
     // Registers <vt-counter-shadow-dom> as a custom element
     window.customElements.define('vt-counter-shadow-dom', VirtuaTrainingShadowDomCounter);

@@ -68,8 +68,7 @@ class VirtuaTrainingEchoSkate extends Component {
     }
 
     /**
-     * Fires after an attribute has been added, removed, or updated. Here we
-     * change the `value` to `first` and restart the timer if `first` changes.
+     * Fires after an attribute has been added, removed, or updated.
      */
     attributeChangedCallback(attr, oldVal, newVal) {
         super.attributeChangedCallback(attr, oldVal, newVal);

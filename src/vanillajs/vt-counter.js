@@ -7,35 +7,41 @@
 class VirtuaTrainingCounter extends HTMLElement {
 
     static get observedAttributes() {
-        return ['first'];
+        return ['value', 'interval'];
     }
 
     // Store properties as attributes so they work both ways.
-    get first() {
-        return this.getAttribute('first');
+    get interval() {
+        const attr = this.getAttribute('interval');
+        return attr ? Number(attr) : 2000;
     }
 
-    set first(first) {
-        this.value = Number(first);
-        this.setAttribute('first', first);
+    set interval(interval) {
+        this.setAttribute('interval', interval);
+        this.stop();
+        this.start();
     }
 
     // Don't store this property as an attribute because it changes frequently.
     get value() {
+        if (!this._value) {
+            this._value = 0;
+        }
         return this._value;
     }
 
     set value(value) {
         const num = Number(value);
         this._value = num;
-        this._content.innerText = num;
+        if (this._content) {
+            this._content.innerText = num;
+        }
     }
 
     constructor() {
         super();
         console.log('inside constructor');
         this._onClick = this._onClick.bind(this);
-        this.addEventListener('click', this._onClick);
     }
 
     /** Fires after an instance has been inserted into the document */
@@ -46,8 +52,10 @@ class VirtuaTrainingCounter extends HTMLElement {
         this._content.className = 'counter-disabled';
         this.appendChild(this._content);
 
-        this._upgradeProperty('first');
-        this.value = this.first || 0;
+        this._upgradeProperty('value');
+        this._upgradeProperty('interval');
+
+        this.addEventListener('click', this._onClick);
     }
 
     /**
@@ -61,52 +69,51 @@ class VirtuaTrainingCounter extends HTMLElement {
     };
 
     /**
-     * Fires after an attribute has been added, removed, or updated. Here we
-     * change the `value` to `first` and restart the timer if `first` changes.
+     * Fires after an attribute has been added, removed, or updated. Updates `value` property if the `value` attribute
+     * is updated.
      */
     attributeChangedCallback(attr, oldVal, newVal) {
         console.log('inside attributeChangedCallback', 'attr:', attr, 'oldVal:', oldVal, 'newVal:', newVal);
-        switch (attr) {
-            case 'first' :
-                // attributeChangedCallback is called before connectedCallback, so this._content
-                // may not be defined yet.
-                if (this._content) {
-                    this.value = newVal;
-                    this.stop();
-                    this.start();
-                }
-                break;
+        if (attr === 'value') {
+            this.value = newVal;
         }
     }
 
-    /**  Fires after an element has been moved to a new document. Not polyfilled. */
+    /** Fires after an element has been moved to a new document. Not polyfilled. */
     adoptedCallback() {
         console.log('inside adoptedCallback');
     }
 
     start() {
         this._content.classList.remove('counter-disabled');
+        this._content.innerText = this.value;
         this._timer = setInterval(() => {
             this.value++;
-        }, 2000);
+        }, this.interval);
         this.dispatchEvent(new CustomEvent('vt-counter-started', {
             detail: {
                 value: this.value,
             },
-            bubbles: true
+            bubbles: true,
+            cancelable: true,
+            composed: true
         }));
     }
 
     stop() {
-        clearInterval(this._timer);
-        this._timer = null;
-        this._content.classList.add('counter-disabled');
-        this.dispatchEvent(new CustomEvent('vt-counter-stopped', {
-            detail: {
-                value: this.value,
-            },
-            bubbles: true
-        }));
+        if (this._timer) {
+            clearInterval(this._timer);
+            this._timer = null;
+            this._content.classList.add('counter-disabled');
+            this.dispatchEvent(new CustomEvent('vt-counter-stopped', {
+                detail: {
+                    value: this.value
+                },
+                bubbles: true,
+                cancelable: true,
+                composed: true
+            }));
+        }
     }
 
     _onClick() {
@@ -124,7 +131,7 @@ class VirtuaTrainingCounter extends HTMLElement {
      */
     _upgradeProperty(prop) {
         if (this.hasOwnProperty(prop)) {
-            let value = this[prop];
+            const value = this[prop];
             delete this[prop];
             this[prop] = value;
         }
