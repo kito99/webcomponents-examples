@@ -2,11 +2,10 @@ exports.config = {
     bundles: [
         {components: ['vt-echo-stencil']}
     ],
-    collections: [
-        {name: '@stencil/router'}
-    ],
     srcDir: 'src/stencil',
-    wwwDir: 'stencil-output'
+    wwwDir: 'stencil-output',
+    publicPath: '/build',
+    appNamespace: '/vt-ech-stencil'
 };
 
 exports.devServer = {

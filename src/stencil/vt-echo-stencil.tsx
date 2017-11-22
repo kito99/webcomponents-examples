@@ -12,7 +12,7 @@ export class VirtuaTrainingEchoStencil {
 
     render() {
         return (
-            <span>{this.message}</span>
+            <span>   asdas{this.message}</span>
         );
     }
 

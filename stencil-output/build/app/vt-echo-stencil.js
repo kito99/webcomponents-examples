@@ -15,7 +15,9 @@ var VirtuaTrainingEchoStencil = /** @class */ (function () {
     function VirtuaTrainingEchoStencil() {
     }
     VirtuaTrainingEchoStencil.prototype.render = function () {
-        return (h("span", null, this.message));
+        return (h("span", null,
+            "   asdas",
+            this.message));
     };
     /**
      * Stencil callback; called when the component is about to load but has not rendered yet.
