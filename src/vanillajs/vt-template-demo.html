@@ -9,15 +9,15 @@
 <body>
 Simple demo of using an HTML template (without a custom element).
 
-<!-- tag::template[]-->
+<!-- tag::template[] -->
 <template id="template">
     <div id="inner-div">
         <div>Inside the template, baby!</div>
     </div>
 </template>
-<!-- end::template[]-->
+<!-- end::template[] -->
 
-<!-- tag::script[]-->
+<!-- tag::script[] -->
 <script>
 
     // Copies the template and appends it to the DOM twice
@@ -31,6 +31,6 @@ Simple demo of using an HTML template (without a custom element).
         document.querySelector("#template").content, true);
     body.appendChild(templateClone2);
 </script>
-<!-- end::script[]-->
+<!-- end::script[] -->
 </body>
 </html>
